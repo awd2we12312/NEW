@@ -15,6 +15,7 @@
       <input type="password" id="password" placeholder="Password" required><br>
       <button type="submit" class="btn">Sign Up</button>
     </form>
+    <p id="message"></p>
     <p>Already have an account? <a href="login.html">Login</a></p>
   </div>
   <script>
@@ -23,16 +24,26 @@
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB3YXJ6aHFydWlsZnJsemlweGJxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0MjAwNzUsImV4cCI6MjA2NTk5NjA3NX0.GZtdgqzP_fgra1itrrAFdqk-gUh3aeP8SLCo4DgvgdU"
     );
 
+    const messageEl = document.getElementById("message");
+
     document.getElementById("signup-form").addEventListener("submit", async (e) => {
       e.preventDefault();
+      messageEl.textContent = "";
+      messageEl.style.color = "#000";
+
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
       const { error } = await supabase.auth.signUp({ email, password });
+
       if (error) {
-        alert("Signup Error: " + error.message);
+        messageEl.textContent = "❌ " + error.message;
+        messageEl.style.color = "red";
       } else {
-        alert("Signup successful! Please login.");
-        window.location.href = "login.html";
+        messageEl.textContent = "✅ Signed up successfully! Redirecting to login...";
+        messageEl.style.color = "green";
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 2000);
       }
     });
   </script>
