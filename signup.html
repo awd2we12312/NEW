@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sign Up</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 <body>
   <div class="container">
-    <h2>Sign Up</h2>
+    <h2>Create an Account</h2>
     <form id="signup-form">
       <input type="email" id="email" placeholder="Email" required><br>
       <input type="password" id="password" placeholder="Password" required><br>
@@ -17,17 +18,20 @@
     <p>Already have an account? <a href="login.html">Login</a></p>
   </div>
   <script>
-    const supabase = supabase.createClient('https://pwarzhqruilfrlzipxbq.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB3YXJ6aHFydWlsZnJsemlweGJxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0MjAwNzUsImV4cCI6MjA2NTk5NjA3NX0.GZtdgqzP_fgra1itrrAFdqk-gUh3aeP8SLCo4DgvgdU');
-    document.getElementById('signup-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
+    const supabase = supabase.createClient(
+      "https://pwarzhqruilfrlzipxbq.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB3YXJ6aHFydWlsZnJsemlweGJxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0MjAwNzUsImV4cCI6MjA2NTk5NjA3NX0.GZtdgqzP_fgra1itrrAFdqk-gUh3aeP8SLCo4DgvgdU"
+    );
 
+    document.getElementById("signup-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
       const { error } = await supabase.auth.signUp({ email, password });
       if (error) {
-        alert("Signup error: " + error.message);
+        alert("Signup Error: " + error.message);
       } else {
-        alert("Signup successful. Redirecting to login...");
+        alert("Signup successful! Please login.");
         window.location.href = "login.html";
       }
     });

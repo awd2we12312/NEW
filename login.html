@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 <body>
@@ -17,17 +18,19 @@
     <p>Don't have an account? <a href="signup.html">Sign up</a></p>
   </div>
   <script>
-    const supabase = supabase.createClient('https://pwarzhqruilfrlzipxbq.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB3YXJ6aHFydWlsZnJsemlweGJxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0MjAwNzUsImV4cCI6MjA2NTk5NjA3NX0.GZtdgqzP_fgra1itrrAFdqk-gUh3aeP8SLCo4DgvgdU');
-    document.getElementById('login-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
+    const supabase = supabase.createClient(
+      "https://pwarzhqruilfrlzipxbq.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB3YXJ6aHFydWlsZnJsemlweGJxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0MjAwNzUsImV4cCI6MjA2NTk5NjA3NX0.GZtdgqzP_fgra1itrrAFdqk-gUh3aeP8SLCo4DgvgdU"
+    );
 
-      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    document.getElementById("login-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) {
-        alert("Login failed: " + error.message);
+        alert("Login Error: " + error.message);
       } else {
-        alert("Login successful! Redirecting...");
         window.location.href = "dashboard.html";
       }
     });
