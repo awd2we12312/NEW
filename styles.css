@@ -8,32 +8,26 @@ body {
   justify-content: center;
   align-items: center;
 }
-.container {
-  background: #fff;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.1);
-  text-align: center;
-  width: 100%;
-  max-width: 360px;
+.form-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
 }
-input {
+input, button {
   width: 100%;
   padding: 10px;
-  margin: 12px 0;
+  margin-top: 10px;
+  border-radius: 5px;
   border: 1px solid #ccc;
-  border-radius: 6px;
 }
-.btn {
-  background: #007bff;
+button {
+  background-color: #0066cc;
   color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  display: inline-block;
   border: none;
-  border-radius: 6px;
   cursor: pointer;
 }
-.btn:hover {
-  background: #0056b3;
+button:hover {
+  background-color: #004999;
 }
